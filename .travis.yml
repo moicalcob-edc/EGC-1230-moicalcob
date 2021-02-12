@@ -16,6 +16,15 @@ install:
   - pip install codacy-coverage
 script:
   - cd decide
-  - coverage run --branch --source=. ./manage.py test voting --keepdb --with-xunit
-  - coverage xml
-  - python-codacy-coverage -r coverage.xml
+  - cp travis_local_settings.py local_settings.py
+  - python ./manage.py test census
+deploy:
+  provider: heroku
+  app: examen-egc-febrero
+  strategy: git
+  api_key: $HEROKU_TOKEN
+  on:
+    branch: master
+notifications:
+  email:
+    - moicalcob@alum.us.es
