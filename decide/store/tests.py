@@ -23,9 +23,6 @@ class StoreTestExecuted(BaseTestCase):
 
     def tearDown(self):
         super().tearDown()
-    
-    def test_executed(self):
-        register_status('TEST_STORE_EXECUTED')
         
 class StoreTextCase(BaseTestCase):
 
